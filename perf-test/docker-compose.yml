@@ -1,0 +1,18 @@
+version: '3.2'
+services:
+  gatling:
+    image: denvazh/gatling
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./conf:/opt/gatling/conf/
+      - ./user-files:/opt/gatling/user-files/
+      - ./results:/opt/gatling/results/
+    command: [
+      "-sf",
+      "/opt/gatling/user-files",
+      "-s",
+      "SingleUserPerfTests",
+      "-rd",
+      "Performance Tests",
+    ]
