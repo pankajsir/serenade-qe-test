@@ -1,0 +1,115 @@
+[
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/pets"
+        },
+        "httpResponse": {
+            "body": [
+                {
+                    "id": 1,
+                    "name": "Charlie",
+                    "tag": "Dog"
+                },
+                {
+                    "id": 2,
+                    "name": "Cupcake",
+                    "tag": "Dog"
+                },
+                {
+                    "id": 3,
+                    "name": "Sunshine",
+                    "tag": "Cat"
+                },
+                {
+                    "id": 4,
+                    "name": "Sammy",
+                    "tag": "Cat"
+                }
+            ]
+        }
+    },
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/pets/{petId}",
+            "pathParameters": {
+                "petId": [
+                    "1"
+                ]
+            }
+        },
+        "httpResponse": {
+            "body": {
+                "id": 1,
+                "name": "Charlie",
+                "tag": "Dog"
+            }
+        }
+    },
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/pets/{petId}",
+            "pathParameters": {
+                "petId": [
+                    "2"
+                ]
+            }
+        },
+        "httpResponse": {
+            "body": {
+                "id": 2,
+                "name": "Cupcake",
+                "tag": "Dog"
+            }
+        }
+    },
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/pets/{petId}",
+            "pathParameters": {
+                "petId": [
+                    "3"
+                ]
+            }
+        },
+        "httpResponse": {
+            "body": {
+                "id": 3,
+                "name": "Sunshine",
+                "tag": "Cat"
+            }
+        }
+    },
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/pets/{petId}",
+            "pathParameters": {
+                "petId": [
+                    "4"
+                ]
+            }
+        },
+        "httpResponse": {
+            "body": {
+                "id": 4,
+                "name": "Sammy",
+                "tag": "Cat"
+            }
+        }
+    },
+
+    {
+        "httpRequest" : {
+          "method" : "GET",
+          "path" : "*/*"
+        },
+        "httpResponse" : {
+          "reasonPhrase" : "Invalid request",
+          "statusCode": 400
+        }
+    }
+]

@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  mock-server:
+    image: mockserver/mockserver:5.13.2
+    ports:
+      - "1080:1080"
+    environment:
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: "true"
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /mock-server-config/mock-server-initialiser.json
+    volumes:
+      - ./mock-server-config/:/mock-server-config
+  node-build-server:
+    image: node
+    volumes:
+      - .:/opt/app/
+    working_dir: /opt/app
+  gatling:
+    image: denvazh/gatling
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./conf:/opt/gatling/conf/
+      - ./perf-test/user-files:/opt/gatling/user-files/
+      - ./perf-test/results:/opt/gatling/results/
+    command: [
+      "-sf",
+      "/opt/gatling/perf-test/user-files",
+      "-s",
+      "SingleUserPerfTests",
+      "-rd",
+      "Performance Tests",
+      ]    
